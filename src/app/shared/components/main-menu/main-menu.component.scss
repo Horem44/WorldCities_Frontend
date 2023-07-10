@@ -1,0 +1,53 @@
+.example-container {
+  height: calc(100vh - 64px);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav {
+   user-select: none;
+   width: 256px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.menu-button {
+  transition: 300ms ease-in-out;
+  transform: rotate(0deg);
+  position: absolute;
+  margin-left: 8px;
+}
+
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+
+.submenu{
+  overflow-y: hidden;
+  transition: transform 300ms ease;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.submenu-item {
+  padding-left: 40px;
+}
+
+.submenu.expanded {
+  transform: scaleY(1);
+}
+
+.example-app-name {
+  margin: 0;
+}
+
+.example-toolbar {
+  justify-content: space-between;
+}
+
+.health-check-container {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+}

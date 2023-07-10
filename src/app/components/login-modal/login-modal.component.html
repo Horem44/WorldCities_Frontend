@@ -1,0 +1,25 @@
+<app-confirm-modal modalTitle="Login" submitButtonCaption="Login">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="login-form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          formControlName="password"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</app-confirm-modal>

@@ -1,0 +1,26 @@
+<div>
+  <h2 mat-dialog-title>{{modalTitle}}</h2>
+  <div mat-dialog-content>
+    <ng-content></ng-content>
+  </div>
+  <div mat-dialog-actions align="end">
+    <span>
+      <button
+        type="button"
+        mat-flat-button
+        color="primary"
+        [mat-dialog-close]="true"
+      >
+        {{submitButtonCaption || "OK"}}
+      </button>
+      <button
+        type="button"
+        mat-stroked-button
+        color="primary"
+        (click)="closeModal()"
+      >
+        Cancel
+      </button>
+    </span>
+  </div>
+</div>

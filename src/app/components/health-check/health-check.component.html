@@ -1,0 +1,16 @@
+<app-confirm-modal modalTitle="Health Check" *ngIf="healthCheckStatus">
+  <div>
+    <div>Checks:</div>
+    <mat-list>
+      <mat-list-item *ngFor="let check of healthCheckStatus.checks" class="health-check-list-item">
+        <div>Type: {{ check.name }}.</div>
+        <div>Response Time: {{ check.responseTime }}ms.</div>
+        <div>Status: {{ check.status }}.</div>
+        <div>Description: {{ check.description }}</div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div>Total response time: {{ healthCheckStatus.totalResponseTime }}ms.</div>
+  <div>Total status: {{ healthCheckStatus.totalStatus }}.</div>
+</app-confirm-modal>

@@ -1,0 +1,62 @@
+<mat-toolbar color="primary" class="example-toolbar">
+  <h1 class="example-app-name">World Cities</h1>
+  <button mat-mini-fab color="primary" aria-label="Login" (click)="openLoginModal()">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+    <mat-nav-list>
+      <mat-list-item (click)="showAddSubMenu = !showAddSubMenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">Add</span>
+        <mat-icon
+          class="menu-button"
+          [ngClass]="{ rotated: showAddSubMenu }"
+          *ngIf="isExpanded || isShowing"
+          >expand_more</mat-icon
+        >
+      </mat-list-item>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showAddSubMenu }"
+        *ngIf="showAddSubMenu && (isExpanded || isShowing)"
+      >
+        <a class="submenu-item" mat-list-item href="...">Country</a>
+        <a class="submenu-item" mat-list-item href="...">City</a>
+      </div>
+    </mat-nav-list>
+
+    <mat-nav-list>
+      <mat-list-item
+        (click)="showListsSubMenu = !showListsSubMenu"
+        class="parent"
+      >
+        <span class="full-width" *ngIf="isExpanded || isShowing">My Lists</span>
+        <mat-icon
+          class="menu-button"
+          [ngClass]="{ rotated: showListsSubMenu }"
+          *ngIf="isExpanded || isShowing"
+          >expand_more</mat-icon
+        >
+      </mat-list-item>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showListsSubMenu }"
+        *ngIf="showListsSubMenu && (isExpanded || isShowing)"
+      >
+        <a class="submenu-item" mat-list-item href="...">Countries</a>
+        <a class="submenu-item" mat-list-item href="...">Cities</a>
+        <a class="submenu-item" mat-list-item href="...">All</a>
+      </div>
+    </mat-nav-list>
+
+    <div class="health-check-container">
+      <button mat-mini-fab color="primary" aria-label="Health Check" (click)="openHealthCheck()">
+        <mat-icon>healing</mat-icon>
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <ng-content></ng-content>
+</mat-sidenav-container>
