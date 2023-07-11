@@ -3,18 +3,17 @@ export class CityModel {
   name!: string;
   lat!: number;
   lon!: number;
-  countryGuid!: string;
+  countryName!: string;
 
   constructor(
     name: string,
     lat: number,
     lon: number,
-    countryGuid: string
+    countryName: string
   ) {
     this.name = name;
     this.lat = lat;
     this.lon = lon;
-
-    this.countryGuid = countryGuid;
+    this.countryName = countryName;
   }
 }

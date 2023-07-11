@@ -1,6 +1,5 @@
 <mat-progress-bar mode="query" *ngIf="isLoading"></mat-progress-bar>
-<div>
-    <app-city-item *ngFor="let city of cities$ | async">
-
-    </app-city-item>
+<div class="city-list-container">
+  <app-city-item *ngFor="let city of cities$ | async" [city]="city">
+  </app-city-item>
 </div>

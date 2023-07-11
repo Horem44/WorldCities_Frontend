@@ -1,3 +1,6 @@
-<app-card-item>
-    CITY CITY CITYCITY CITY CITYCITY CITY CITYCITY CITY CITYCITY CITY CITYCITY CITY CITYCITY CITY CITYCITY CITY CITY
+<app-card-item [title]="city.name" [description]="city.countryName">
+  <mat-list>
+    <mat-list-item>Latitude: {{ city.lat }}</mat-list-item>
+    <mat-list-item>Longtitude: {{ city.lon }}</mat-list-item>
+  </mat-list>
 </app-card-item>

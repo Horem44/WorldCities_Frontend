@@ -9,11 +9,18 @@
       <mat-form-field appearance="outline">
         <mat-label>City Name</mat-label>
         <input
-          matInput
           type="text"
-          placeholder="City Name"
+          placeholder="Type city name..."
+          aria-label="City Name"
+          matInput
           formControlName="cityName"
+          [matAutocomplete]="auto"
         />
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="chooseCityInfo($event.option.value)">
+          <mat-option *ngFor="let info of cityInfo$ | async" [value]="info">
+            {{ info.name }} {{info.country}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
