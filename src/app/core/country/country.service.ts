@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/enviroments/enviroment';
 import { BaseService } from '../http-client/base.service';
 import { CountryModel } from 'src/app/shared/models/country/country.model';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,35 +10,33 @@ import { Observable } from 'rxjs';
 export class CountryService {
   constructor(private readonly baseService: BaseService) {}
 
-  getAllCities(): Observable<Array<CountryModel>> {
+  getAllCountry(): Observable<Array<CountryModel>> {
     return this.baseService.delete<Array<CountryModel>>(
       `${environment.serverBaseUrl}/city`
-    );
+    ).pipe(take(1));
   }
 
-  getCityByGuid(cityGuid: string): Observable<CountryModel> {
+  getCountryByGuid(cityGuid: string): Observable<CountryModel> {
     return this.baseService.delete<CountryModel>(
       `${environment.serverBaseUrl}/city/${cityGuid}`
-    );
+    ).pipe(take(1));
   }
 
-  deleteCity(cityGuid: string): Observable<void> {
+  deleteCountry(cityGuid: string): Observable<void> {
     return this.baseService.delete<void>(
       `${environment.serverBaseUrl}/city/delete/${cityGuid}`
-    );
+    ).pipe(take(1));
   }
 
-  addCity(city: CountryModel): Observable<CountryModel> {
-    return this.baseService.post<CountryModel>(
-      `${environment.serverBaseUrl}/city/add`,
-      city
-    );
+  addCountry(city: CountryModel): Observable<CountryModel> {
+    return this.baseService
+      .post<CountryModel>(`${environment.serverBaseUrl}/city/add`, city)
+      .pipe(take(1));
   }
 
-  updateCity(city: Partial<CountryModel>): Observable<CountryModel> {
-    return this.baseService.put<CountryModel>(
-      `${environment.serverBaseUrl}/city/update`,
-      city
-    );
+  updateCountry(city: Partial<CountryModel>): Observable<CountryModel> {
+    return this.baseService
+      .put<CountryModel>(`${environment.serverBaseUrl}/city/update`, city)
+      .pipe(take(1));
   }
 }

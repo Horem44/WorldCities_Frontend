@@ -1,4 +1,9 @@
-<app-confirm-modal modalTitle="Add City" submitButtonCaption="Add">
+<app-confirm-modal
+  modalTitle="Add City"
+  submitButtonCaption="Add"
+  [allowToSubmit]="form.valid"
+  [submit$]="submit$"
+>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="login-form-container">
       <mat-form-field appearance="outline">
@@ -15,7 +20,7 @@
         <mat-label>Latitude</mat-label>
         <input
           matInput
-          type="text"
+          type="number"
           placeholder="Latitude"
           formControlName="latitude"
         />
@@ -25,7 +30,7 @@
         <mat-label>Longtitude</mat-label>
         <input
           matInput
-          type="text"
+          type="number"
           placeholder="Longtitude"
           formControlName="longtitude"
         />

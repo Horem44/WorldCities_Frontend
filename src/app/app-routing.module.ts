@@ -14,21 +14,21 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: ModalEntrypointComponent,
+    component: ModalEntrypointComponent<LoginModalComponent>,
     data: {
       modalComponent: LoginModalComponent,
     },
   },
   {
     path: 'add-city',
-    component: ModalEntrypointComponent,
+    component: ModalEntrypointComponent<AddCityModalComponent>,
     data: {
       modalComponent: AddCityModalComponent,
     },
   },
   {
     path: 'add-country',
-    component: ModalEntrypointComponent,
+    component: ModalEntrypointComponent<AddCountryModalComponent>,
     data: {
       modalComponent: AddCountryModalComponent,
     },

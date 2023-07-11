@@ -9,7 +9,8 @@
         type="button"
         mat-flat-button
         color="primary"
-        [mat-dialog-close]="true"
+        [disabled]="!allowToSubmit"
+        (click)="submitModal()"
       >
         {{submitButtonCaption || "OK"}}
       </button>

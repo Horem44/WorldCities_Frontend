@@ -5,20 +5,18 @@ export class CountryModel {
   name!: string;
   iso2!: string;
   iso3!: string;
-  cities?: Array<CityModel>;
+  cities?: Array<CityModel> | null;
 
   constructor(
-    guid: string,
     name: string,
     iso2: string,
     iso3: string,
     cities?: Array<CityModel>
   ) {
-    this.guid = guid;
     this.name = name;
     this.iso2 = iso2;
     this.iso3 = iso3;
 
-    this.cities = cities || [];
+    this.cities = cities || null;
   }
 }
