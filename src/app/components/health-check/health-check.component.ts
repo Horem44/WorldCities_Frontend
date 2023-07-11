@@ -19,7 +19,7 @@ export class HealthCheckComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.healthCheckService
       .getHealthStatus()
-      .pipe(takeUntil(this.destroy$), tap(console.log))
+      .pipe(takeUntil(this.destroy$))
       .subscribe(
         (healthCheckStatus) => (this.healthCheckStatus = healthCheckStatus)
       );

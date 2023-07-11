@@ -5,6 +5,7 @@ import { ModalEntrypointComponent } from './shared/components/modal-entrypoint/m
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { AddCityModalComponent } from './components/add-city-modal/add-city-modal.component';
 import { AddCountryModalComponent } from './components/add-country-modal/add-country-modal.component';
+import { CityListComponent } from './components/city-list/city-list.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
     data: {
       modalComponent: AddCountryModalComponent,
     },
+  },
+  {
+    path: 'cities-list',
+    component: CityListComponent,
   },
 ];
 

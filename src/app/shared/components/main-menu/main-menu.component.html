@@ -65,8 +65,8 @@
         [ngClass]="{ expanded: showListsSubMenu }"
         *ngIf="showListsSubMenu && (isExpanded || isShowing)"
       >
-        <a class="submenu-item" mat-list-item href="...">Countries</a>
-        <a class="submenu-item" mat-list-item href="...">Cities</a>
+        <a class="submenu-item" mat-list-item >Countries</a>
+        <a class="submenu-item" mat-list-item [routerLink]="['/cities-list']">Cities</a>
         <a class="submenu-item" mat-list-item href="...">All</a>
       </div>
     </mat-nav-list>

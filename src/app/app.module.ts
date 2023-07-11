@@ -14,6 +14,7 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddCityModalComponent } from './components/add-city-modal/add-city-modal.component';
 import { AddCountryModalComponent } from './components/add-country-modal/add-country-modal.component';
+import { CityListComponent } from './components/city-list/city-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AddCountryModalComponent } from './components/add-country-modal/add-cou
     LoginModalComponent,
     AddCityModalComponent,
     AddCountryModalComponent,
+    CityListComponent,
   ],
   imports: [
     BrowserModule,
