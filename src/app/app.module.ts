@@ -12,6 +12,8 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './components/home/home.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddCityModalComponent } from './components/add-city-modal/add-city-modal.component';
+import { AddCountryModalComponent } from './components/add-country-modal/add-country-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HealthCheckComponent,
     HomeComponent,
     LoginModalComponent,
+    AddCityModalComponent,
+    AddCountryModalComponent,
   ],
   imports: [
     BrowserModule,

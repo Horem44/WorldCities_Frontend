@@ -1,13 +1,42 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { ModalEntrypointComponent } from './shared/components/modal-entrypoint/modal-entrypoint.component';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { AddCityModalComponent } from './components/add-city-modal/add-city-modal.component';
+import { AddCountryModalComponent } from './components/add-country-modal/add-country-modal.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, title: 'World Cities' },
+  {
+    path: '',
+    component: HomeComponent,
+    title: 'World Cities',
+  },
+  {
+    path: 'login',
+    component: ModalEntrypointComponent,
+    data: {
+      modalComponent: LoginModalComponent,
+    },
+  },
+  {
+    path: 'add-city',
+    component: ModalEntrypointComponent,
+    data: {
+      modalComponent: AddCityModalComponent,
+    },
+  },
+  {
+    path: 'add-country',
+    component: ModalEntrypointComponent,
+    data: {
+      modalComponent: AddCountryModalComponent,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,0 +1,45 @@
+<app-confirm-modal modalTitle="Add City" submitButtonCaption="Add">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="login-form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>City Name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="City Name"
+          formControlName="cityName"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Latitude</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Latitude"
+          formControlName="latitude"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Longtitude</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Longtitude"
+          formControlName="longtitude"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Country"
+          formControlName="country"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</app-confirm-modal>

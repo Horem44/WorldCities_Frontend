@@ -1,7 +1,15 @@
 <mat-toolbar color="primary" class="example-toolbar">
   <h1 class="example-app-name">World Cities</h1>
-  <button mat-mini-fab color="primary" aria-label="Login" (click)="openLoginModal()">
-    <mat-icon>account_circle</mat-icon>
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="Login"
+    [routerLink]="['/login']" 
+    (click)="openLoginModal()"
+  >
+    <a class="account-circle-link">
+      <mat-icon>account_circle</mat-icon>
+    </a>
   </button>
 </mat-toolbar>
 
@@ -22,8 +30,20 @@
         [ngClass]="{ expanded: showAddSubMenu }"
         *ngIf="showAddSubMenu && (isExpanded || isShowing)"
       >
-        <a class="submenu-item" mat-list-item href="...">Country</a>
-        <a class="submenu-item" mat-list-item href="...">City</a>
+        <a
+          class="submenu-item"
+          mat-list-item
+          [routerLink]="['/add-country']" 
+          (click)="openAddCountryModal()"
+          >Country
+        </a>
+        <a
+          class="submenu-item"
+          mat-list-item
+          [routerLink]="['/add-city']" 
+          (click)="openAddCityModal()"
+          >City</a
+        >
       </div>
     </mat-nav-list>
 
@@ -52,11 +72,16 @@
     </mat-nav-list>
 
     <div class="health-check-container">
-      <button mat-mini-fab color="primary" aria-label="Health Check" (click)="openHealthCheck()">
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Health Check"
+        (click)="openHealthCheck()"
+      >
         <mat-icon>healing</mat-icon>
       </button>
     </div>
   </mat-sidenav>
 
-  <ng-content></ng-content>
+  <router-outlet></router-outlet>
 </mat-sidenav-container>
