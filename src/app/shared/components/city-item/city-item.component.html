@@ -1,4 +1,8 @@
-<app-card-item [title]="city.name" [description]="city.countryName">
+<app-card-item
+  [title]="city.name"
+  [description]="city.countryName"
+  [imageUrl]="cityImageUrl"
+>
   <mat-list>
     <mat-list-item>Latitude: {{ city.lat }}</mat-list-item>
     <mat-list-item>Longtitude: {{ city.lon }}</mat-list-item>

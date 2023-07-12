@@ -16,9 +16,12 @@
           formControlName="cityName"
           [matAutocomplete]="auto"
         />
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="chooseCityInfo($event.option.value)">
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="chooseCityInfo($event.option.value)"
+        >
           <mat-option *ngFor="let info of cityInfo$ | async" [value]="info">
-            {{ info.name }} {{info.country}}
+            {{ info.name }} {{ info.country }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -52,6 +55,18 @@
           formControlName="country"
         />
       </mat-form-field>
+
+      <button type="button" mat-raised-button (click)="fileInput.click()">
+        Choose City Image
+      </button>
+      <input
+        hidden
+        #fileInput
+        type="file"
+        formControlName="cityImage"
+        id="file"
+        (change)="onFileSelected($event)"
+      />
     </div>
   </form>
 </app-confirm-modal>

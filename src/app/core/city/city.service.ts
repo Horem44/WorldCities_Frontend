@@ -3,6 +3,7 @@ import { BaseService } from '../http-client/base.service';
 import { CityModel } from 'src/app/shared/models/city/city.model';
 import { environment } from 'src/enviroments/enviroment';
 import { Observable, BehaviorSubject, take, tap } from 'rxjs';
+import { AddCityDto } from 'src/app/shared/dtos/city-dtos/add-city.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -33,9 +34,19 @@ export class CityService {
       .pipe(take(1));
   }
 
-  addCity(city: CityModel): Observable<CityModel> {
+  addCity(city: AddCityDto): Observable<CityModel> {
+    const formData = new FormData();
+
+    Object.keys(city).forEach(key => {
+      if(city[key] instanceof Blob){
+        formData.append('file', <Blob>city[key], Date.now().toLocaleString + '.jpg');
+      }else{
+        formData.append(key, city[key]!.toString());
+      }
+    });
+
     return this.baseService
-      .post<CityModel>(`${environment.serverBaseUrl}/city`, city)
+      .post<CityModel>(`${environment.serverBaseUrl}/city`, formData)
       .pipe(
         take(1),
         tap((city) => this.cities$.next([...this.cities$.getValue(), city]))

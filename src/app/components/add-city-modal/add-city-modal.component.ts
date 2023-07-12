@@ -5,6 +5,7 @@ import { Observable, Subject, switchMap, take, takeUntil } from 'rxjs';
 import { CityService } from 'src/app/core/city/city.service';
 import { FindCityService } from 'src/app/core/find-city/find-city.service';
 import { IFindCity } from 'src/app/core/find-city/interfaces/find-city.interface';
+import { AddCityDto } from 'src/app/shared/dtos/city-dtos/add-city.dto';
 import { CityModel } from 'src/app/shared/models/city/city.model';
 
 @Component({
@@ -17,6 +18,7 @@ export class AddCityModalComponent implements OnInit, OnDestroy {
   cityInfo$!: Observable<IFindCity[]>;
 
   private readonly destroy$ = new Subject<void>();
+  private cityImage!: Blob;
 
   constructor(
     private readonly _cityService: CityService,
@@ -28,22 +30,37 @@ export class AddCityModalComponent implements OnInit, OnDestroy {
     latitude: new FormControl<number | null>(null, [Validators.required]),
     longtitude: new FormControl<number | null>(null, [Validators.required]),
     country: new FormControl<string>('', [Validators.required]),
+    cityImage: new FormControl(null, [Validators.required]),
   });
 
   submit() {
     const { cityName, latitude, longtitude, country } = this.form.value;
-    const city = new CityModel(cityName, latitude, longtitude, country);
 
-    this._cityService.addCity(city).subscribe();
+    const addCityDto = new AddCityDto(
+      cityName,
+      latitude,
+      longtitude,
+      country,
+      this.cityImage
+    );
+
+    this._cityService.addCity(addCityDto).subscribe();
   }
 
   chooseCityInfo(cityInfo: IFindCity) {
-    this.form.setValue({
+    this.form.patchValue({
       cityName: cityInfo.name,
       latitude: cityInfo.latitude,
       longtitude: cityInfo.longitude,
       country: cityInfo.country,
     });
+  }
+
+  onFileSelected(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const file = target.files![0];
+
+    this.cityImage = file;
   }
 
   ngOnInit(): void {

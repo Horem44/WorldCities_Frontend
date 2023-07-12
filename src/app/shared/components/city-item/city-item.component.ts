@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CityModel } from '../../models/city/city.model';
+import { environment } from 'src/enviroments/enviroment';
 
 @Component({
   selector: 'app-city-item',
@@ -8,4 +9,8 @@ import { CityModel } from '../../models/city/city.model';
 })
 export class CityItemComponent {
   @Input() city!: CityModel;
+
+  get cityImageUrl(){
+    return `${environment.serverBaseUrl}/city/image/${this.city.cityImageGuid}`
+  }
 }
