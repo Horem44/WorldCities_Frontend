@@ -6,6 +6,8 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
 import { AddCityModalComponent } from './components/add-city-modal/add-city-modal.component';
 import { AddCountryModalComponent } from './components/add-country-modal/add-country-modal.component';
 import { CityListComponent } from './components/city-list/city-list.component';
+import { RegisterModalComponent } from './components/register-modal/register-modal/register-modal.component';
+import { LogoutModalComponent } from './components/logout-modal/logout-modal/logout-modal.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,20 @@ const routes: Routes = [
     component: ModalEntrypointComponent<LoginModalComponent>,
     data: {
       modalComponent: LoginModalComponent,
+    },
+  },
+  {
+    path: 'register',
+    component: ModalEntrypointComponent<RegisterModalComponent>,
+    data: {
+      modalComponent: RegisterModalComponent,
+    },
+  },
+  {
+    path: 'logout',
+    component: ModalEntrypointComponent<LogoutModalComponent>,
+    data: {
+      modalComponent: LogoutModalComponent,
     },
   },
   {

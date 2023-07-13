@@ -9,8 +9,12 @@
 }
 
 .card-image {
-    margin: 0 auto;
+    margin: 12px auto 0 auto;
     width: 160px;
     height: 160px;
     border-radius: 12px;
+}
+
+.card-actions {
+    justify-content: space-between;
 }

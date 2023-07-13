@@ -22,7 +22,10 @@ export class ConfirmModalComponent {
   }
 
   submitModal() {
-    this.submit$.next();
+    if(this.submit$){
+      this.submit$.next();
+    }
+    
     this.closeModal();
   }
 }

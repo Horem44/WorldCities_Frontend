@@ -1,16 +1,27 @@
 <mat-toolbar color="primary" class="example-toolbar">
   <h1 class="example-app-name">World Cities</h1>
   <button
+    *ngIf="!isLogin"
     mat-mini-fab
     color="primary"
     aria-label="Login"
-    [routerLink]="['/login']" 
+    [routerLink]="['/login']"
     (click)="openLoginModal()"
   >
     <a class="account-circle-link">
       <mat-icon>account_circle</mat-icon>
     </a>
   </button>
+
+  <mat-card
+    *ngIf="isLogin && currentUser"
+    (click)="openLogoutModal()"
+    [routerLink]="['/logout']"
+  >
+    <mat-card-content class="card-user-info">{{
+      currentUser.personName
+    }}</mat-card-content>
+  </mat-card>
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container" autosize>
@@ -33,14 +44,14 @@
         <a
           class="submenu-item"
           mat-list-item
-          [routerLink]="['/add-country']" 
+          [routerLink]="['/add-country']"
           (click)="openAddCountryModal()"
           >Country
         </a>
         <a
           class="submenu-item"
           mat-list-item
-          [routerLink]="['/add-city']" 
+          [routerLink]="['/add-city']"
           (click)="openAddCityModal()"
           >City</a
         >
@@ -65,8 +76,10 @@
         [ngClass]="{ expanded: showListsSubMenu }"
         *ngIf="showListsSubMenu && (isExpanded || isShowing)"
       >
-        <a class="submenu-item" mat-list-item >Countries</a>
-        <a class="submenu-item" mat-list-item [routerLink]="['/cities-list']">Cities</a>
+        <a class="submenu-item" mat-list-item>Countries</a>
+        <a class="submenu-item" mat-list-item [routerLink]="['/cities-list']"
+          >Cities</a
+        >
         <a class="submenu-item" mat-list-item href="...">All</a>
       </div>
     </mat-nav-list>
