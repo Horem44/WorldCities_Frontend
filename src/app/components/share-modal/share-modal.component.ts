@@ -19,22 +19,24 @@ export class ShareModalComponent {
 
   form: FormGroup = new FormGroup({
     personName: new FormControl<string>('', [Validators.required]),
+    guid: new FormControl<string>(''),
   });
 
   submit() {
-    const { userName } = this.form.value;
-    console.log(userName);
+    const { personName, guid } = this.form.value;
+    console.log(personName, guid);
   }
 
   chooseUserInfo(userInfo: UserModel) {
-    this.form.patchValue({
+    this.form.setValue({
       personName: userInfo.personName,
+      guid: userInfo.userId
     });
+
+    console.log()
   }
 
   ngOnInit(): void {
-    this.users$ = this._userService.getUsers$();
-    
     this.submit$.pipe(take(1)).subscribe(() => this.submit());
 
     this.users$ = this.form.get('personName')!.valueChanges.pipe(

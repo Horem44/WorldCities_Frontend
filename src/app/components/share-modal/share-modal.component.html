@@ -21,7 +21,7 @@
           #auto="matAutocomplete"
           (optionSelected)="chooseUserInfo($event.option.value)"
         >
-          <mat-option *ngFor="let user of users$ | async" [value]="user.personName">
+          <mat-option *ngFor="let user of users$ | async" [value]="user">
             {{ user.personName }}
           </mat-option>
         </mat-autocomplete>

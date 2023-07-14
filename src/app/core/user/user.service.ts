@@ -23,7 +23,7 @@ export class UserService {
   constructor(private readonly _baseService: BaseService) {}
 
   debounceFilterUsers(personName: string) {
-    return timer(100).pipe(
+    return timer(300).pipe(
       distinctUntilChanged(),
       startWith(''),
       switchMap(() => this.getFilteredUsers(personName.trim()))
@@ -33,7 +33,7 @@ export class UserService {
   private getFilteredUsers(personName: string) {
     return this._baseService
       .get<UserModel[]>(
-        `${environment.serverBaseUrl}/user/filter/${personName}`
+        `${environment.serverBaseUrl}/user/filter?personName=${personName}`
       )
       .pipe(
         take(1),
