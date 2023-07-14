@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { AddCityModalComponent } from 'src/app/components/add-city-modal/add-city-modal.component';
-import { AddCountryModalComponent } from 'src/app/components/add-country-modal/add-country-modal.component';
 import { HealthCheckComponent } from 'src/app/components/health-check/health-check.component';
 import { LoginModalComponent } from 'src/app/components/login-modal/login-modal.component';
 import { AuthService } from 'src/app/core/auth/auth.service';
@@ -46,10 +45,6 @@ export class MainMenuComponent implements OnInit, OnDestroy {
 
   openAddCityModal() {
     this._modalService.open(AddCityModalComponent);
-  }
-
-  openAddCountryModal() {
-    this._modalService.open(AddCountryModalComponent);
   }
 
   ngOnInit(): void {

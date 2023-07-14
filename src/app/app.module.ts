@@ -13,11 +13,11 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddCityModalComponent } from './components/add-city-modal/add-city-modal.component';
-import { AddCountryModalComponent } from './components/add-country-modal/add-country-modal.component';
 import { CityListComponent } from './components/city-list/city-list.component';
 import { AuthInterceptor } from './shared/interceptors/auth/auth.interceptor';
 import { RegisterModalComponent } from './components/register-modal/register-modal/register-modal.component';
 import { LogoutModalComponent } from './components/logout-modal/logout-modal/logout-modal.component';
+import { CountriesListComponent } from './components/countries-list/countries-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { LogoutModalComponent } from './components/logout-modal/logout-modal/log
     RegisterModalComponent,
     LogoutModalComponent,
     AddCityModalComponent,
-    AddCountryModalComponent,
+    CountriesListComponent,
     CityListComponent,
   ],
   imports: [

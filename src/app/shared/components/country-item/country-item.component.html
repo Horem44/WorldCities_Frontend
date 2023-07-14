@@ -1,0 +1,8 @@
+<app-card-item
+  [title]="country.name"
+  [useButtons]="false"
+  [useImage]="false"
+  [routerLink]="['/cities-list/' + country.guid]"
+>
+    <div>Cities count: {{ country.citiesCount }}</div>
+</app-card-item>

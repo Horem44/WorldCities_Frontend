@@ -8,6 +8,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ModalEntrypointComponent } from './components/modal-entrypoint/modal-entrypoint.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { CityItemComponent } from './components/city-item/city-item.component';
+import { CountryItemComponent } from './components/country-item/country-item.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CityItemComponent } from './components/city-item/city-item.component';
     ModalEntrypointComponent,
     CardItemComponent,
     CityItemComponent,
+    CountryItemComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { CityItemComponent } from './components/city-item/city-item.component';
     ModalEntrypointComponent,
     CardItemComponent,
     CityItemComponent,
+    CountryItemComponent,
   ],
 })
 export class SharedModule {}

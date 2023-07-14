@@ -9,7 +9,8 @@ export class CardItemComponent {
   @Input() title!: string;
   @Input() description!: string;
   @Input() imageUrl!: string;
-  @Input() likesCount!: number;
+  @Input() useButtons = true;
+  @Input() useImage = true;
 
   @Output() like$ = new EventEmitter<void>();
   @Output() dislike$ = new EventEmitter<void>();

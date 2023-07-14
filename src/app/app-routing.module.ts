@@ -4,10 +4,10 @@ import { HomeComponent } from './components/home/home.component';
 import { ModalEntrypointComponent } from './shared/components/modal-entrypoint/modal-entrypoint.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { AddCityModalComponent } from './components/add-city-modal/add-city-modal.component';
-import { AddCountryModalComponent } from './components/add-country-modal/add-country-modal.component';
 import { CityListComponent } from './components/city-list/city-list.component';
 import { RegisterModalComponent } from './components/register-modal/register-modal/register-modal.component';
 import { LogoutModalComponent } from './components/logout-modal/logout-modal/logout-modal.component';
+import { CountriesListComponent } from './components/countries-list/countries-list.component';
 
 const routes: Routes = [
   {
@@ -44,18 +44,24 @@ const routes: Routes = [
     },
   },
   {
-    path: 'add-country',
-    component: ModalEntrypointComponent<AddCountryModalComponent>,
-    data: {
-      modalComponent: AddCountryModalComponent,
-    },
-  },
-  {
     path: 'cities-list',
     component: CityListComponent,
-    children: [],
+    data: { methodKey: 'getUserCities' },
   },
-  { path: 'all', component: CityListComponent, data: { loadAll: true } },
+  {
+    path: 'cities-list/:countryGuid',
+    component: CityListComponent,
+    data: { methodKey: 'getCountryCities', paramKey: 'countryGuid' },
+  },
+  {
+    path: 'countries-list',
+    component: CountriesListComponent,
+  },
+  {
+    path: 'all',
+    component: CityListComponent,
+    data: { methodKey: 'getAllCities' },
+  },
 ];
 
 @NgModule({

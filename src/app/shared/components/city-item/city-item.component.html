@@ -2,7 +2,6 @@
   [title]="city.name"
   [description]="city.countryName"
   [imageUrl]="cityImageUrl"
-  [likesCount]="city.likesCount"
   (like$)="like()"
   (dislike$)="dislike()"
 >
@@ -10,4 +9,5 @@
     <mat-list-item>Latitude: {{ city.lat }}</mat-list-item>
     <mat-list-item>Longtitude: {{ city.lon }}</mat-list-item>
   </mat-list>
+  <div class="likes-count">{{city.likesCount}} Likes</div>
 </app-card-item>

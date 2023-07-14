@@ -44,13 +44,6 @@
         <a
           class="submenu-item"
           mat-list-item
-          [routerLink]="['/add-country']"
-          (click)="openAddCountryModal()"
-          >Country
-        </a>
-        <a
-          class="submenu-item"
-          mat-list-item
           [routerLink]="['/add-city']"
           (click)="openAddCityModal()"
           >City</a
@@ -76,7 +69,7 @@
         [ngClass]="{ expanded: showListsSubMenu }"
         *ngIf="showListsSubMenu && (isExpanded || isShowing)"
       >
-        <a class="submenu-item" mat-list-item>Countries</a>
+        <a class="submenu-item" mat-list-item [routerLink]="['/countries-list']">Countries</a>
         <a class="submenu-item" mat-list-item [routerLink]="['/cities-list']"
           >Cities</a
         >

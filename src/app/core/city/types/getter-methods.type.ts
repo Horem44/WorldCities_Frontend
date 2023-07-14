@@ -1,0 +1,1 @@
+export type GetterMethodType = "getUserCities" | "getAllCities" | "getCountryCities";
