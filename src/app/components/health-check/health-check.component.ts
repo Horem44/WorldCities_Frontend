@@ -10,14 +10,24 @@ import { Observable, Subject } from 'rxjs';
   styleUrls: ['./health-check.component.scss'],
 })
 export class HealthCheckComponent implements OnInit, OnDestroy {
+  result!: Observable<IHealthCheckStatus | null>;
   healthCheckStatus!: IHealthCheckStatus;
 
   private destroy$ = new Subject<void>();
 
-  constructor(private readonly healthCheckService: HealthCheckService) {}
+  constructor(private readonly _healthCheckService: HealthCheckService) {
+    this.result = this._healthCheckService.result;
+  }
+
+  onRefresh() {
+    this._healthCheckService.sendClientUpdate();
+  }
 
   ngOnInit() {
-    this.healthCheckService
+    this._healthCheckService.startConnection();
+    this._healthCheckService.addDataListeners();
+
+    this._healthCheckService
       .getHealthStatus()
       .pipe(takeUntil(this.destroy$))
       .subscribe(

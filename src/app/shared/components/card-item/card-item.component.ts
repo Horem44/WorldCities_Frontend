@@ -15,11 +15,17 @@ export class CardItemComponent {
   @Output() like$ = new EventEmitter<void>();
   @Output() dislike$ = new EventEmitter<void>();
 
+  @Output() share$ = new EventEmitter<void>();
+
   private isLiked = false;
 
   like(){
     this.isLiked = !this.isLiked;
 
     this.isLiked ? this.like$.emit() : this.dislike$.emit();
+  }
+
+  share(){
+    this.share$.emit();
   }
 }

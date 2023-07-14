@@ -1,13 +1,10 @@
-<app-confirm-modal
-  modalTitle="Health Check"
-  *ngIf="healthCheckStatus"
-  [allowToSubmit]="true"
->
-  <div>
+<app-confirm-modal modalTitle="Health Check" [allowToSubmit]="true">
+  <p *ngIf="!(result | async)"><em>Loading...</em></p>
+  <div *ngIf="result | async as res">
     <div>Checks:</div>
     <mat-list>
       <mat-list-item
-        *ngFor="let check of healthCheckStatus.checks"
+        *ngFor="let check of res.checks"
         class="health-check-list-item"
       >
         <div>Type: {{ check.name }}.</div>
@@ -16,8 +13,10 @@
         <div>Description: {{ check.description }}</div>
       </mat-list-item>
     </mat-list>
+
+    <div>Total response time: {{ res.totalResponseTime }}ms.</div>
+    <div>Total status: {{ res.totalStatus }}.</div>
   </div>
 
-  <div>Total response time: {{ healthCheckStatus.totalResponseTime }}ms.</div>
-  <div>Total status: {{ healthCheckStatus.totalStatus }}.</div>
+  <button (click)="onRefresh()" mat-flat-button>Refresh</button>
 </app-confirm-modal>

@@ -1,0 +1,31 @@
+
+<app-confirm-modal
+  modalTitle="Share"
+  submitButtonCaption="Share"
+  [allowToSubmit]="form.valid"
+  [submit$]="submit$"
+>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="login-form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>User Name</mat-label>
+        <input
+          type="text"
+          placeholder="Type name..."
+          aria-label="User Name"
+          matInput
+          formControlName="personName"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="chooseUserInfo($event.option.value)"
+        >
+          <mat-option *ngFor="let user of users$ | async" [value]="user.personName">
+            {{ user.personName }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </form>
+</app-confirm-modal>
