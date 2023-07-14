@@ -5,7 +5,7 @@ import { Observable, Subject, switchMap, take, takeUntil } from 'rxjs';
 import { CityService } from 'src/app/core/city/city.service';
 import { FindCityService } from 'src/app/core/find-city/find-city.service';
 import { IFindCity } from 'src/app/core/find-city/interfaces/find-city.interface';
-import { AddCityDto } from 'src/app/shared/dtos/city-dtos/add-city.dto';
+import { AddCityDto } from 'src/app/shared/dtos/city/add-city.dto';
 import { CityModel } from 'src/app/shared/models/city/city.model';
 
 @Component({
@@ -22,7 +22,7 @@ export class AddCityModalComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly _cityService: CityService,
-    private readonly _findCityService: FindCityService
+    private readonly _findCityService: FindCityService,
   ) {}
 
   form: FormGroup = new FormGroup({

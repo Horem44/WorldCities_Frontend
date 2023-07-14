@@ -3,7 +3,7 @@ import { BaseService } from '../http-client/base.service';
 import { CityModel } from 'src/app/shared/models/city/city.model';
 import { environment } from 'src/enviroments/enviroment';
 import { Observable, BehaviorSubject, take, tap } from 'rxjs';
-import { AddCityDto } from 'src/app/shared/dtos/city-dtos/add-city.dto';
+import { AddCityDto } from 'src/app/shared/dtos/city/add-city.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +13,11 @@ export class CityService {
 
   constructor(private readonly baseService: BaseService) {}
 
-  getAllCities() {
+  getCities(all: boolean = false) {
+    const urlPrefix = all ? '/city/all' : '/city';
+
     return this.baseService
-      .get<CityModel[]>(`${environment.serverBaseUrl}/city`)
+      .get<CityModel[]>(`${environment.serverBaseUrl}${urlPrefix}`)
       .pipe(
         take(1),
         tap((cities) => this.cities$.next(cities))

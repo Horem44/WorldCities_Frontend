@@ -53,7 +53,9 @@ const routes: Routes = [
   {
     path: 'cities-list',
     component: CityListComponent,
+    children: [],
   },
+  { path: 'all', component: CityListComponent, data: { loadAll: true } },
 ];
 
 @NgModule({

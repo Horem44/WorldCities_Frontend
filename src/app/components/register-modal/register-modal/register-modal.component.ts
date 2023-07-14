@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subject, take } from 'rxjs';
 import { AuthService } from 'src/app/core/auth/auth.service';
-import { RegisterDto } from 'src/app/shared/dtos/auth-dtos/register.dto';
+import { RegisterDto } from 'src/app/shared/dtos/auth/register.dto';
 
 @Component({
   selector: 'app-register-modal',

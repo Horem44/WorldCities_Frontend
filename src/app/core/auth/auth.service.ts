@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from '../http-client/base.service';
 import { LocalStorageService as LocalStorageService } from '../localstorage/localstorage.service';
-import { LoginDto } from 'src/app/shared/dtos/auth-dtos/login.dto';
+import { LoginDto } from 'src/app/shared/dtos/auth/login.dto';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
-import { AuthDto } from 'src/app/shared/dtos/auth-dtos/auth.dto';
+import { AuthDto } from 'src/app/shared/dtos/auth/auth.dto';
 import { environment } from 'src/enviroments/enviroment';
-import { RegisterDto } from 'src/app/shared/dtos/auth-dtos/register.dto';
+import { RegisterDto } from 'src/app/shared/dtos/auth/register.dto';
 import { UserService } from '../user/user.service';
 import { UserModel } from 'src/app/shared/models/user/user.model';
 

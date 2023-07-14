@@ -6,7 +6,7 @@ import {
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subject, take } from 'rxjs';
 import { AuthService } from 'src/app/core/auth/auth.service';
-import { LoginDto } from 'src/app/shared/dtos/auth-dtos/login.dto';
+import { LoginDto } from 'src/app/shared/dtos/auth/login.dto';
 
 @Component({
   selector: 'app-login-modal',

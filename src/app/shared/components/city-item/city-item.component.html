@@ -2,6 +2,9 @@
   [title]="city.name"
   [description]="city.countryName"
   [imageUrl]="cityImageUrl"
+  [likesCount]="city.likesCount"
+  (like$)="like()"
+  (dislike$)="dislike()"
 >
   <mat-list>
     <mat-list-item>Latitude: {{ city.lat }}</mat-list-item>
