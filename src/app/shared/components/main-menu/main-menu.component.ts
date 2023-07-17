@@ -15,13 +15,16 @@ import { LogoutModalComponent } from 'src/app/components/logout-modal/logout-mod
   styleUrls: ['./main-menu.component.scss'],
 })
 export class MainMenuComponent implements OnInit, OnDestroy {
-  isLogin = false;
   currentUser?: UserModel | null;
 
   isExpanded = true;
   showListsSubMenu = false;
   isShowing = false;
   showAddSubMenu = false;
+
+  get isAuth(){
+    return this._userService.isAuth;
+  }
 
   private readonly destroy$ = new Subject<void>();
 
@@ -50,8 +53,7 @@ export class MainMenuComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this._authService.login$
       .pipe(takeUntil(this.destroy$))
-      .subscribe((isLogin) => {
-        this.isLogin = isLogin;
+      .subscribe(() => {
         this.currentUser = this._userService.currentUser;
       });
   }

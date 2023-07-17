@@ -52,6 +52,19 @@ export class AuthService {
       );
   }
 
+  authenticate(): Observable<AuthDto>{
+    return this._baseService
+      .get<AuthDto>(`${environment.serverBaseUrl}/account/authenticate`)
+      .pipe(
+        take(1),
+        tap((dto) => this.setCredentials(dto))
+      );
+  }
+
+  getJwtToken(){
+    return this._localStorageService.getItem("token");
+  }
+
   private removeCredentials(){
     this.setUser(null);
     this.removeJwtToken();

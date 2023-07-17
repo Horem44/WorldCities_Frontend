@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="example-toolbar">
   <h1 class="example-app-name">World Cities</h1>
   <button
-    *ngIf="!isLogin"
+    *ngIf="!isAuth"
     mat-mini-fab
     color="primary"
     aria-label="Login"
@@ -14,7 +14,7 @@
   </button>
 
   <mat-card
-    *ngIf="isLogin && currentUser"
+    *ngIf="isAuth && currentUser"
     (click)="openLogoutModal()"
     [routerLink]="['/logout']"
   >
@@ -72,6 +72,12 @@
         <a class="submenu-item" mat-list-item [routerLink]="['/countries-list']">Countries</a>
         <a class="submenu-item" mat-list-item [routerLink]="['/cities-list']"
           >Cities</a
+        >
+        <a class="submenu-item" mat-list-item [routerLink]="['/cities-list/liked']"
+          >Liked</a
+        >
+        <a class="submenu-item" mat-list-item [routerLink]="['/cities-list/shared']"
+          >Shared</a
         >
         <a
           class="submenu-item"

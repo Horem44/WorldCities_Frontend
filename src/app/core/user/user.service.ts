@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable, distinctUntilChanged, startWith, switchMap
   providedIn: 'root',
 })
 export class UserService {
-  private readonly users$ = new BehaviorSubject<UserModel[]>([]);
+  private readonly _users$ = new BehaviorSubject<UserModel[]>([]);
 
   set currentUser(user: UserModel | null) {
     this._currentUser = user;
@@ -16,6 +16,10 @@ export class UserService {
 
   get currentUser(): UserModel | null {
     return this._currentUser;
+  }
+
+  get isAuth(){
+    return !!this.currentUser;
   }
 
   private _currentUser!: UserModel | null;
@@ -37,11 +41,11 @@ export class UserService {
       )
       .pipe(
         take(1),
-        tap((users) => this.users$.next(users))
+        tap((users) => this._users$.next(users))
       );
   }
 
   getUsers$(){
-    return this.users$;
+    return this._users$;
   }
 }

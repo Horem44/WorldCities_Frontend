@@ -33,6 +33,15 @@ export class CityService {
       );
   }
 
+  getLikedCities() {
+    return this._baseService
+      .get<CityModel[]>(`${environment.serverBaseUrl}/city/liked`)
+      .pipe(
+        take(1),
+        tap((cities) => this.cities$.next(cities))
+      );
+  }
+
   getCityByGuid(cityGuid: string) {
     return this._baseService
       .get<CityModel>(`${environment.serverBaseUrl}/city/${cityGuid}`)

@@ -42,6 +42,9 @@ export class CityListComponent implements OnInit {
       case 'getUserCities':
         this.getterObservable = this._cityService.getUserCities();
         break;
+      case 'getLikedCities':
+        this.getterObservable = this._cityService.getLikedCities();
+        break;
       case 'getCountryCities':
         this.getterObservable = this._cityService.getCountryCities(
           this.routeParam
