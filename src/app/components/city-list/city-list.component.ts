@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CityService } from 'src/app/core/city/city.service';
 import { GetterMethodType } from 'src/app/core/city/types/getter-methods.type';
+import { LikeService } from 'src/app/core/like/like.service';
 import { CityModel } from 'src/app/shared/models/city/city.model';
 
 @Component({
@@ -22,8 +23,12 @@ export class CityListComponent implements OnInit {
 
   constructor(
     private readonly _cityService: CityService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private readonly _likeService: LikeService,
   ) {
+    this._likeService.startConnection();
+    this._likeService.addDataListeners();
+
     this.methodKey = this._route.snapshot.data['methodKey'];
     this.paramKey = this._route.snapshot.data['paramKey'];
 

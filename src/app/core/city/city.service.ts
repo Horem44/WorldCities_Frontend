@@ -6,14 +6,19 @@ import { Observable, BehaviorSubject, take, tap } from 'rxjs';
 import { AddCityDto } from 'src/app/shared/dtos/city/add-city.dto';
 import { GetterMethodType } from './types/getter-methods.type';
 import { Params } from '@angular/router';
+import { HubService } from '../hub/hub.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CityService {
   private readonly cities$ = new BehaviorSubject<CityModel[]>([]);
+  private _cityHub!: signalR.HubConnection;
 
-  constructor(private readonly _baseService: BaseService) {}
+  constructor(
+    private readonly _baseService: BaseService,
+    private readonly _hubService: HubService
+  ) {}
 
   getUserCities() {
     return this._baseService
