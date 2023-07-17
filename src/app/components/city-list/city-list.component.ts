@@ -17,8 +17,6 @@ export class CityListComponent implements OnInit {
   private paramKey!: string;
   private getterObservable!: Observable<CityModel[]>;
 
-  isLoading = true;
-
   cities$!: BehaviorSubject<CityModel[]>;
 
   constructor(
@@ -53,6 +51,6 @@ export class CityListComponent implements OnInit {
         break;
     }
 
-    this.getterObservable.subscribe(() => (this.isLoading = false));
+    this.getterObservable.subscribe();
   }
 }

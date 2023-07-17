@@ -10,8 +10,6 @@ import { LikeService } from './core/like/like.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  isLoading = true;
-
   constructor(
     private readonly _authService: AuthService,
     private readonly _userService: UserService,
@@ -24,7 +22,6 @@ export class AppComponent implements OnInit {
 
     this._authService
       .authenticate()
-      .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((user) => {
         if (user) {
           console.log(user);

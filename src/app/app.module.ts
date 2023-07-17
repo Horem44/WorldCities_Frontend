@@ -18,6 +18,7 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
 import { LogoutModalComponent } from './components/logout-modal/logout-modal/logout-modal.component';
 import { CountriesListComponent } from './components/countries-list/countries-list.component';
 import { GlobalErrorHandler } from './shared/error-handler/error-handler.service';
+import { HttpLoadingInterceptor } from './shared/interceptors/loading/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,8 +49,13 @@ import { GlobalErrorHandler } from './shared/error-handler/error-handler.service
       multi: true,
     },
     {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpLoadingInterceptor,
+      multi: true,
+    },
+    {
       provide: ErrorHandler,
-      useClass: GlobalErrorHandler
+      useClass: GlobalErrorHandler,
     },
   ],
   bootstrap: [AppComponent],

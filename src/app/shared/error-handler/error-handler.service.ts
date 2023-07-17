@@ -10,11 +10,13 @@ export class GlobalErrorHandler implements ErrorHandler {
   ) {}
 
   handleError(error: any) {
+    console.log(error);
+
     if (!(error instanceof HttpErrorResponse)) {
       error = error.rejection; 
     }
 
-    if (error.status === 401) {
+    if (error && error.status === 401) {
       return;
     }
 

@@ -10,7 +10,7 @@ import { CardItemComponent } from './components/card-item/card-item.component';
 import { CityItemComponent } from './components/city-item/city-item.component';
 import { CountryItemComponent } from './components/country-item/country-item.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
-
+import { LoadingDialogComponent } from './components/loading-dialog/loading-dialog/loading-dialog.component';
 @NgModule({
   declarations: [
     MainMenuComponent,
@@ -20,6 +20,7 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
     CityItemComponent,
     CountryItemComponent,
     ErrorDialogComponent,
+    LoadingDialogComponent,
   ],
   imports: [
     CommonModule,
