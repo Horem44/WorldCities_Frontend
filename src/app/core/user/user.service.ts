@@ -26,25 +26,6 @@ export class UserService {
 
   constructor(private readonly _baseService: BaseService) {}
 
-  debounceFilterUsers(personName: string) {
-    return timer(300).pipe(
-      distinctUntilChanged(),
-      startWith(''),
-      switchMap(() => this.getFilteredUsers(personName.trim()))
-    );
-  }
-
-  private getFilteredUsers(personName: string) {
-    return this._baseService
-      .get<UserModel[]>(
-        `${environment.serverBaseUrl}/user/filter?personName=${personName}`
-      )
-      .pipe(
-        take(1),
-        tap((users) => this._users$.next(users))
-      );
-  }
-
   getUsers$(){
     return this._users$;
   }

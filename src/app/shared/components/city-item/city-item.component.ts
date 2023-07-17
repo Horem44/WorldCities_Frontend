@@ -4,7 +4,6 @@ import { environment } from 'src/enviroments/enviroment';
 import { LikeService } from 'src/app/core/like/like.service';
 import { LikeDto } from '../../dtos/like/like.dto';
 import { ModalService } from 'src/app/core/modal/modal.service';
-import { ShareModalComponent } from 'src/app/components/share-modal/share-modal.component';
 
 @Component({
   selector: 'app-city-item',
@@ -29,9 +28,5 @@ export class CityItemComponent {
 
   dislike() {
     this._likeService.removeLike(new LikeDto(this.city.guid)).subscribe();
-  }
-
-  share() {
-    this._modalService.open(ShareModalComponent);
   }
 }

@@ -18,7 +18,6 @@ import { AuthInterceptor } from './shared/interceptors/auth/auth.interceptor';
 import { RegisterModalComponent } from './components/register-modal/register-modal/register-modal.component';
 import { LogoutModalComponent } from './components/logout-modal/logout-modal/logout-modal.component';
 import { CountriesListComponent } from './components/countries-list/countries-list.component';
-import { ShareModalComponent } from './components/share-modal/share-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { ShareModalComponent } from './components/share-modal/share-modal.compon
     AddCityModalComponent,
     CountriesListComponent,
     CityListComponent,
-    ShareModalComponent,
   ],
   imports: [
     BrowserModule,
