@@ -9,6 +9,7 @@ import { ModalEntrypointComponent } from './components/modal-entrypoint/modal-en
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { CityItemComponent } from './components/city-item/city-item.component';
 import { CountryItemComponent } from './components/country-item/country-item.component';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CountryItemComponent } from './components/country-item/country-item.com
     CardItemComponent,
     CityItemComponent,
     CountryItemComponent,
+    ErrorDialogComponent,
   ],
   imports: [
     CommonModule,

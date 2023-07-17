@@ -24,11 +24,7 @@ export class CityListComponent implements OnInit {
   constructor(
     private readonly _cityService: CityService,
     private _route: ActivatedRoute,
-    private readonly _likeService: LikeService,
   ) {
-    this._likeService.startConnection();
-    this._likeService.addDataListeners();
-
     this.methodKey = this._route.snapshot.data['methodKey'];
     this.paramKey = this._route.snapshot.data['paramKey'];
 

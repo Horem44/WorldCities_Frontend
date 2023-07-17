@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HealthCheckComponent } from './components/health-check/health-check.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { MainMenuComponent } from './shared/components/main-menu/main-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { SharedModule } from './shared/shared.module';
@@ -18,6 +17,7 @@ import { AuthInterceptor } from './shared/interceptors/auth/auth.interceptor';
 import { RegisterModalComponent } from './components/register-modal/register-modal/register-modal.component';
 import { LogoutModalComponent } from './components/logout-modal/logout-modal/logout-modal.component';
 import { CountriesListComponent } from './components/countries-list/countries-list.component';
+import { GlobalErrorHandler } from './shared/error-handler/error-handler.service';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,10 @@ import { CountriesListComponent } from './components/countries-list/countries-li
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
+    },
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
     },
   ],
   bootstrap: [AppComponent],
