@@ -52,9 +52,9 @@ export class AuthService {
       );
   }
 
-  authenticate(): Observable<AuthDto>{
+  authorize(): Observable<AuthDto>{
     return this._baseService
-      .get<AuthDto>(`${environment.serverBaseUrl}/account/authenticate`)
+      .get<AuthDto>(`${environment.serverBaseUrl}/account/authorize`)
       .pipe(
         take(1),
         tap((dto) => this.setCredentials(dto))

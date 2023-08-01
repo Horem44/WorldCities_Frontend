@@ -4,9 +4,8 @@ import { CityModel } from 'src/app/shared/models/city/city.model';
 import { environment } from 'src/enviroments/enviroment';
 import { Observable, BehaviorSubject, take, tap } from 'rxjs';
 import { AddCityDto } from 'src/app/shared/dtos/city/add-city.dto';
-import { GetterMethodType } from './types/getter-methods.type';
-import { Params } from '@angular/router';
 import { HubService } from '../hub/hub.service';
+import { CountryService } from '../country/country.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +16,7 @@ export class CityService {
 
   constructor(
     private readonly _baseService: BaseService,
-    private readonly _hubService: HubService
+    private readonly _hubService: HubService,
   ) {}
 
   getUserCities() {
@@ -65,7 +64,7 @@ export class CityService {
     Object.keys(city).forEach((key) => {
       if (city[key] instanceof Blob) {
         formData.append(
-          'file',
+          'image',
           <Blob>city[key],
           Date.now().toLocaleString + '.jpg'
         );
@@ -91,7 +90,7 @@ export class CityService {
   getCountryCities(countryGuid: string) {
     return this._baseService
       .get<Array<CityModel>>(
-        `${environment.serverBaseUrl}/country/${countryGuid}`
+        `${environment.serverBaseUrl}/city/${countryGuid}`
       )
       .pipe(
         take(1),

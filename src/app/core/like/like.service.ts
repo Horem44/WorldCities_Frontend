@@ -2,29 +2,26 @@ import { Injectable } from '@angular/core';
 import { BaseService } from '../http-client/base.service';
 import { CityService } from '../city/city.service';
 import { environment } from 'src/enviroments/enviroment';
-import { catchError, of, switchMap, take, tap } from 'rxjs';
+import { of, switchMap, take, tap } from 'rxjs';
 import { LikeDto } from 'src/app/shared/dtos/like/like.dto';
-import { HubService } from '../hub/hub.service';
 import * as signalR from '@microsoft/signalr';
 import { LikeModel } from 'src/app/shared/models/like/like.model';
-import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LikeService {
-  private _cityHub!: signalR.HubConnection;
+  private _likeHub!: signalR.HubConnection;
 
   constructor(
     private readonly _baseService: BaseService,
     private readonly _cityService: CityService,
-    private readonly _userService: UserService
   ) {}
 
   addLike(likeDto: LikeDto) {
     return this._baseService
       .get<boolean>(
-        `${environment.serverBaseUrl}/like/is-already-liked/${likeDto.cityGuid}`
+        `${environment.serverBaseUrl}/like/is-already-liked/${likeDto.cityId}`
       )
       .pipe(
         switchMap((isCityAlreadyLiked) => {
@@ -38,55 +35,39 @@ export class LikeService {
             return of(null);
           }
         }),
-        take(1),
-        tap((like) => {
-          if (like) {
-            this.sendIncreaseCityLikesCount(likeDto.cityGuid);
-          }
-        })
+        take(1)
       );
   }
 
   removeLike(likeDto: LikeDto) {
     return this._baseService
-      .delete<void>(`${environment.serverBaseUrl}/like/${likeDto.cityGuid}`)
-      .pipe(
-        take(1),
-        tap(() => this.sendDecreaseCityLikesCount(likeDto.cityGuid))
-      );
+      .delete<void>(`${environment.serverBaseUrl}/like/${likeDto.cityId}`)
+      .pipe(take(1));
   }
 
   startConnection() {
-    this._cityHub = new signalR.HubConnectionBuilder()
+    this._likeHub = new signalR.HubConnectionBuilder()
       .configureLogging(signalR.LogLevel.Information)
-      .withUrl(environment.serverBaseUrl + '/city-hub', {
+      .withUrl(environment.serverBaseUrl + '/like-hub', {
         withCredentials: false,
       })
       .build();
-    console.log('Starting connection to city hub...');
-    this._cityHub
+    console.log('Starting connection to like hub...');
+    this._likeHub
       .start()
       .then(() => console.log('Connection started.'))
       .catch((err: any) => console.log(err));
   }
 
-  private sendIncreaseCityLikesCount(cityGuid: string) {
-    this._cityHub.invoke('increaseCityLikesCountClient', cityGuid);
-  }
-
-  private sendDecreaseCityLikesCount(cityGuid: string) {
-    this._cityHub.invoke('decreaseCityLikesCountClient', cityGuid);
-  }
-
   addDataListeners() {
-    this._cityHub.on('increaseCityLikesCount', (cityGuid) => {
+    this._likeHub.on('IncreaseCityLikes', (cityGuid) => {
       console.log(
         'Update issued by server for the following reason: ' + cityGuid
       );
       this.updateCityLikes(cityGuid, true);
     });
 
-    this._cityHub.on('decreaseCityLikesCount', (cityGuid) => {
+    this._likeHub.on('DecreaseCityLikes', (cityGuid) => {
       console.log(
         'Update issued by server for the following reason: ' + cityGuid
       );

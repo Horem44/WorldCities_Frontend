@@ -14,7 +14,7 @@ export class CityItemComponent {
   @Input() city!: CityModel;
 
   get cityImageUrl() {
-    return `${environment.serverBaseUrl}/city/image/${this.city.cityImageGuid}`;
+    return `${environment.serverBaseUrl}/city/image/${this.city.cityImageId}`;
   }
 
   constructor(

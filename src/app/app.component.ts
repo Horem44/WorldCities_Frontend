@@ -21,10 +21,9 @@ export class AppComponent implements OnInit {
     this._likeService.addDataListeners();
 
     this._authService
-      .authenticate()
+      .authorize()
       .subscribe((user) => {
         if (user) {
-          console.log(user);
           this._userService.currentUser = user;
         }
       });

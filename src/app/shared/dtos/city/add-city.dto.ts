@@ -4,20 +4,20 @@ export class AddCityDto {
   name!: string;
   lat!: number;
   lon!: number;
-  countryName!: string;
+  countryId!: string;
   cityImage!: Blob;
 
   constructor(
     name: string,
     lat: number,
     lon: number,
-    countryName: string,
-    cityImage: Blob,
+    countryId: string,
+    cityImage: Blob
   ) {
     this.name = name;
     this.lat = lat;
     this.lon = lon;
-    this.countryName = countryName;
+    this.countryId = countryId;
     this.cityImage = cityImage;
   }
 }

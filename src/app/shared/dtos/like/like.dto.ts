@@ -1,7 +1,7 @@
 export class LikeDto {
-  cityGuid!: string;
+  cityId!: string;
 
-  constructor(cityGuid: string) {
-    this.cityGuid = cityGuid;
+  constructor(cityId: string) {
+    this.cityId = cityId;
   }
 }

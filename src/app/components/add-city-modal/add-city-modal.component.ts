@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Observable, Subject, switchMap, take, takeUntil } from 'rxjs';
 import { CityService } from 'src/app/core/city/city.service';
+import { CountryService } from 'src/app/core/country/country.service';
+import { AddCountryDto } from 'src/app/core/country/dto/add-country.dto';
 import { FindCityService } from 'src/app/core/find-city/find-city.service';
 import { IFindCity } from 'src/app/core/find-city/interfaces/find-city.interface';
 import { AddCityDto } from 'src/app/shared/dtos/city/add-city.dto';
@@ -23,6 +25,7 @@ export class AddCityModalComponent implements OnInit, OnDestroy {
   constructor(
     private readonly _cityService: CityService,
     private readonly _findCityService: FindCityService,
+    private readonly _countryService: CountryService
   ) {}
 
   form: FormGroup = new FormGroup({
@@ -36,15 +39,22 @@ export class AddCityModalComponent implements OnInit, OnDestroy {
   submit() {
     const { cityName, latitude, longtitude, country } = this.form.value;
 
-    const addCityDto = new AddCityDto(
-      cityName,
-      latitude,
-      longtitude,
-      country,
-      this.cityImage
-    );
-
-    this._cityService.addCity(addCityDto).subscribe();
+    this._countryService
+      .addCountry(new AddCountryDto(country))
+      .pipe(
+        switchMap((countryId) =>
+          this._cityService.addCity(
+            new AddCityDto(
+              cityName,
+              latitude,
+              longtitude,
+              countryId,
+              this.cityImage
+            )
+          )
+        )
+      )
+      .subscribe();
   }
 
   chooseCityInfo(cityInfo: IFindCity) {

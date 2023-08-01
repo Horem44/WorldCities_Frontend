@@ -6,7 +6,7 @@ export class CityModel {
   lat!: number;
   lon!: number;
   countryName!: string;
-  cityImageGuid!: string;
+  cityImageId!: string;
   likesCount!: number;
 
   constructor(
@@ -14,14 +14,14 @@ export class CityModel {
     lat: number,
     lon: number,
     countryName: string,
-    cityImageGuid: string,
-    likesCount: number,
+    cityImageId: string,
+    likesCount: number
   ) {
     this.name = name;
     this.lat = lat;
     this.lon = lon;
     this.countryName = countryName;
-    this.cityImageGuid = cityImageGuid;
+    this.cityImageId = cityImageId;
     this.likesCount = likesCount;
   }
 }
